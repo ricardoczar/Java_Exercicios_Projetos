@@ -18,7 +18,7 @@ public class Program {
 		double n = input.nextDouble();
 
 		for (int i = 0; i < n; i++) {
-			System.out.println("Tax payer " + i + 1 + " data: ");
+			System.out.printf("Tax payer ", i + 1 , " data: ");
 			System.out.println("Individual or company (i/c)?");
 			char c = input.next().charAt(0);
 			System.out.println("Name: ");
@@ -36,12 +36,18 @@ public class Program {
 				List.add(new PessoaJuridica(name,AnualIncome, employees));
 			}
 			
-			for (Pessoa pessoa : List) {
-				System.out.println(String.format("%s: $ %.2f", pessoa.getNome(), pessoa.imposto()));
-			}
+			
 
 		}
 
+		for (Pessoa pessoa : List) {
+			System.out.println(String.format("%s: $ %.2f", pessoa.getNome(), pessoa.imposto()));
+		}
+		double total = 0.0;
+		for (Pessoa pessoa : List) {
+			total += pessoa.imposto();
+		}
+		System.out.println(String.format("TOTAL TAXES : $ %.2f" , total));
 		input.close();
 
 	}
